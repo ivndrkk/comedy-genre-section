@@ -1,0 +1,1136 @@
+/* --- BASE STYLES (Adapted from original) --- */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Arial, sans-serif;
+    /* Dark background, but slightly warmer bottom gradient for comedy */
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a 40%, #1a1810);
+    color: #e6e6e6;
+}
+
+/* --- VARIABLES FOR EASY THEME CHANGES --- */
+:root {
+    --comedy-gold: #ffd700;
+    --comedy-gold-dim: rgba(255, 215, 0, 0.4);
+    --comedy-gold-glow: rgba(255, 215, 0, 0.25);
+    --bg-card: #181818;
+    --bg-card-hover: #222;
+}
+
+.content-wrapper {
+    flex: 1;
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* --- HEADER --- */
+.site-header {
+    background: #111;
+    padding: 30px 10px 20px 10px;
+    text-align: center;
+    /* Changed border to Gold */
+    border-bottom: 2px solid var(--comedy-gold-dim);
+    box-shadow: 0 4px 12px var(--comedy-gold-glow);
+    z-index: 10;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    color: var(--comedy-gold);
+    /* Gold Glow */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.header-subtitle {
+    margin-top: 10px;
+    font-style: italic;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+/* --- SECTIONS --- */
+section,
+.intro-section {
+    background: var(--bg-card);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+    transition: 0.3s ease;
+}
+
+.intro-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-image {
+    flex: 1;
+}
+
+.intro-image img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid var(--comedy-gold-dim);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+h2,
+h3 {
+    margin-top: 0;
+    color: var(--comedy-gold);
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+p {
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* --- NAVIGATION GRID (The "Buttons") --- */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns on desktop */
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--bg-card);
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--comedy-gold);
+    transform: scaleX(0);
+    transition: 0.4s;
+}
+
+.nav-card:hover {
+    transform: translateY(-8px);
+    background: var(--bg-card-hover);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.15);
+    border-color: var(--comedy-gold-dim);
+}
+
+.nav-card:hover:before {
+    transform: scaleX(1);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #555;
+    transition: 0.3s;
+}
+
+.nav-card:hover .card-icon {
+    color: var(--comedy-gold);
+    transform: rotate(5deg) scale(1.1);
+}
+
+.nav-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.nav-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    background: #111;
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid var(--comedy-gold-dim);
+    box-shadow: 0 -4px 12px var(--comedy-gold-glow);
+    font-size: 0.9rem;
+}
+
+/* --- ANIMATIONS --- */
+.fade-in {
+    animation: slideUpFade 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MEDIA QUERIES (Responsive Design) --- */
+
+/* Tablet (Landscape and Portrait) */
+@media (max-width: 900px) {
+    .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2x2 Grid */
+    }
+
+    .intro-content {
+        flex-direction: column;
+    }
+
+    .intro-image img {
+        max-height: 300px;
+        object-fit: cover;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .nav-grid {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+    }
+
+    .intro-section {
+        padding: 20px;
+    }
+
+    .nav-card {
+        padding: 20px;
+        flex-direction: row;
+        /* Horizontal cards on mobile */
+        text-align: left;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .nav-card .card-icon {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+
+    .nav-card div:last-child {
+        flex: 1;
+    }
+}
+
+/* =========================================
+   HISTORY PAGE SPECIFIC STYLES (REVISED)
+   ========================================= */
+
+/* --- Back Button --- */
+.nav-actions {
+    margin-bottom: 40px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--comedy-gold);
+    border: 1px solid var(--comedy-gold);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: var(--comedy-gold);
+    color: #000;
+    box-shadow: 0 0 15px var(--comedy-gold-glow);
+}
+
+/* --- Timeline Container --- */
+.timeline-container {
+    position: relative;
+    padding: 20px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* Ensure shadows/glows don't get cut off */
+    overflow: visible;
+}
+
+/* The vertical center line (Desktop Default) */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--comedy-gold-dim);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 0;
+}
+
+/* --- Timeline Items --- */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    z-index: 1;
+}
+
+/* The Year/Date Bubble */
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background: #111;
+    border: 2px solid var(--comedy-gold);
+    color: var(--comedy-gold);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    white-space: nowrap;
+    /* Prevents date breaking into two lines */
+}
+
+/* The Content Box */
+.timeline-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Image Wrapper */
+.timeline-content .t-image {
+    width: 45%;
+    text-align: right;
+    padding-right: 30px;
+}
+
+/* Text Wrapper */
+.timeline-content .t-text {
+    width: 45%;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    position: relative;
+}
+
+.timeline-content .t-text:hover {
+    border-color: var(--comedy-gold-dim);
+    transform: scale(1.02);
+}
+
+/* Reverse Layout (Even items) */
+.timeline-content.reverse-layout {
+    flex-direction: row-reverse;
+}
+
+.timeline-content.reverse-layout .t-image {
+    text-align: left;
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+/* Images */
+.t-image img {
+    width: 100%;
+    max-width: 350px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #333;
+    transition: 0.3s;
+}
+
+.timeline-item:hover .t-image img {
+    border-color: var(--comedy-gold);
+    box-shadow: 0 0 15px var(--comedy-gold-glow);
+}
+
+/* Typography */
+.t-text h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.t-text p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   HISTORY RESPONSIVE MEDIA QUERIES (FIXED)
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    /* 1. MOVE LINE TO LEFT (Offset 40px so marker doesn't cut off) */
+    .timeline-line {
+        left: 40px;
+        transform: translateX(-50%);
+    }
+
+    /* 2. ALIGN MARKER TO NEW LINE */
+    .timeline-marker {
+        left: 40px;
+        transform: translateX(-50%);
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* 3. STACK CONTENT VERTICALLY */
+    .timeline-content {
+        flex-direction: column;
+        align-items: flex-start;
+        width: auto;
+        /* Push content clear of the line */
+        margin-left: 80px;
+        padding-right: 10px;
+    }
+
+    /* 4. FIX REVERSE LAYOUT 
+       Use column-reverse to ensure Image stays ON TOP of text for consistency */
+    .timeline-content.reverse-layout {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        width: auto;
+        margin-left: 80px;
+        padding-right: 10px;
+    }
+
+    /* 5. RESET WIDTHS & SPACING */
+    .timeline-content .t-image,
+    .timeline-content .t-text,
+    .timeline-content.reverse-layout .t-image {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+
+    /* Add space between image and text */
+    .t-image {
+        margin-bottom: 15px;
+    }
+
+    /* Allow image to be full width of the container */
+    .t-image img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        /* Prevent huge vertical images */
+    }
+}
+
+/* =========================================
+   FACTS PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* --- The Grid Layout --- */
+.facts-grid {
+    display: grid;
+    /* This automatically fits columns based on width. 
+       If a card gets smaller than 300px, it wraps to the next line. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+/* --- The Card Base --- */
+.fact-card {
+    background: var(--bg-card);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    /* Needed for absolute positioning of the number */
+    overflow: hidden;
+    /* Keeps the big number inside the box */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Card Hover Effects --- */
+.fact-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--comedy-gold);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+}
+
+/* --- Wide Card (Spans 2 columns on Desktop) --- */
+.wide-card {
+    grid-column: span 2;
+}
+
+/* --- The Big Background Number --- */
+.fact-bg-num {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    /* Very faint */
+    z-index: 0;
+    font-family: Arial, sans-serif;
+    transition: 0.4s;
+    user-select: none;
+}
+
+.fact-card:hover .fact-bg-num {
+    color: rgba(255, 215, 0, 0.1);
+    /* Glows slightly on hover */
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* --- The Icon --- */
+.fact-icon {
+    font-size: 2.5rem;
+    color: var(--comedy-gold);
+    margin-bottom: 20px;
+    z-index: 1;
+    /* Puts it above the background number */
+}
+
+/* --- The Content --- */
+.fact-content {
+    z-index: 1;
+    /* Puts text above the background number */
+}
+
+.fact-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.fact-card:hover .fact-content h3 {
+    color: var(--comedy-gold);
+}
+
+.fact-content p {
+    color: #bbb;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* =========================================
+   FACTS PAGE MEDIA QUERIES
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* On tablets/mobile, force wide cards to behave normally 
+       so they don't squish or break layout */
+    .wide-card {
+        grid-column: span 1;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+        /* Single column stack */
+        gap: 20px;
+    }
+
+    .fact-bg-num {
+        font-size: 6rem;
+    }
+}
+
+/* =========================================
+   PEOPLE PAGE (FLIP CARDS) STYLES
+   ========================================= */
+
+/* --- The Grid --- */
+.flip-grid {
+    display: grid;
+    /* Responsive columns: Fits as many 280px cards as possible */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+/* --- The Card Container --- */
+.flip-card {
+    background-color: transparent;
+    height: 420px;
+    /* Fixed height is necessary for flip to work */
+    perspective: 1000px;
+    /* Essential: Creates the 3D depth effect */
+    cursor: pointer;
+}
+
+/* --- The Inner Wrapper (This creates the rotation) --- */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    /* Duration of flip */
+    transform-style: preserve-3d;
+    /* Essential: Keeps children in 3D space */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Action: Rotate the inner card */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* --- Common styles for Front and Back --- */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Hides the back of the element when facing away */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+/* --- Front Side Styling --- */
+.flip-card-front {
+    background-color: #111;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Text Overlay on Front */
+.front-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+    padding: 60px 20px 20px 20px;
+    text-align: center;
+}
+
+.front-caption h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.front-caption p {
+    margin: 5px 0 0 0;
+    color: var(--comedy-gold);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* --- Back Side Styling --- */
+.flip-card-back {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    color: white;
+    transform: rotateY(180deg);
+    /* Start it rotated so it's behind the front */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid var(--comedy-gold-dim);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.flip-card-back h3 {
+    font-size: 1.8rem;
+    color: var(--comedy-gold);
+    margin-bottom: 15px;
+}
+
+.back-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--comedy-gold);
+    margin-bottom: 20px;
+}
+
+.person-bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+/* Stats Section on Back */
+.person-stats {
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.stat-row {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.stat-row i {
+    color: var(--comedy-gold);
+    width: 20px;
+    /* Fixed width to align text */
+    text-align: center;
+}
+
+/* =========================================
+   PEOPLE PAGE MEDIA QUERIES
+   ========================================= */
+
+@media (max-width: 600px) {
+    .flip-grid {
+        grid-template-columns: 1fr;
+        /* 1 Column on mobile */
+        padding: 0 10px;
+    }
+
+    .flip-card {
+        height: 400px;
+        /* Slightly shorter on mobile */
+    }
+}
+
+/* =========================================
+   MOVIES PAGE (CINEMA TICKET) STYLES
+   ========================================= */
+
+.ticket-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+/* --- The Ticket Container --- */
+.movie-ticket {
+    display: flex;
+    background: radial-gradient(circle at center, #222, #181818);
+    border: 2px solid var(--comedy-gold-dim);
+    border-radius: 12px;
+    overflow: hidden;
+    /* Keeps content inside rounded corners */
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 220px;
+}
+
+.movie-ticket:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: var(--comedy-gold);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+}
+
+/* --- Left: The Poster --- */
+.ticket-poster {
+    width: 160px;
+    /* Fixed width */
+    flex-shrink: 0;
+}
+
+.ticket-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-right: 2px solid #000;
+}
+
+/* --- Center: The Info --- */
+.ticket-info {
+    flex: 1;
+    /* Takes up remaining space */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ticket-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #444;
+    padding-bottom: 10px;
+}
+
+.ticket-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.ticket-year {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--comedy-gold);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ticket-meta {
+    margin-bottom: 15px;
+    color: #888;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 20px;
+}
+
+.ticket-meta i {
+    color: var(--comedy-gold);
+    margin-right: 5px;
+}
+
+.ticket-plot {
+    margin: 0;
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- The Perforation Line (The Rip) --- */
+.ticket-rip {
+    width: 0;
+    border-left: 3px dashed var(--comedy-gold-dim);
+    position: relative;
+    margin: 10px 0;
+}
+
+/* The circular notches at top and bottom */
+.ticket-rip:before,
+.ticket-rip:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #0f0f0f;
+    /* Must match Page Body Background */
+    border-radius: 50%;
+    left: -11.5px;
+    /* Center circle on the line */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-rip:before {
+    top: -20px;
+}
+
+.ticket-rip:after {
+    bottom: -20px;
+}
+
+/* --- Right: The Stub --- */
+.ticket-stub {
+    width: 100px;
+    flex-shrink: 0;
+    background: rgba(255, 215, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.stub-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+.stub-admit {
+    writing-mode: vertical-rl;
+    /* Vertical Text */
+    transform: rotate(180deg);
+    /* Flip it so it reads bottom-to-top */
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--comedy-gold);
+    font-size: 0.8rem;
+    font-family: 'Courier New', monospace;
+}
+
+.stub-rating {
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* CSS Drawn Barcode */
+.barcode {
+    width: 40px;
+    height: 60px;
+    background: repeating-linear-gradient(to right,
+            #fff 0px,
+            #fff 2px,
+            transparent 2px,
+            transparent 4px,
+            #fff 4px,
+            #fff 5px,
+            transparent 5px,
+            transparent 9px);
+    opacity: 0.7;
+}
+
+/* =========================================
+   MOVIES PAGE MEDIA QUERIES
+   ========================================= */
+
+@media (max-width: 768px) {
+    .movie-ticket {
+        flex-direction: column;
+        /* Stack vertically */
+    }
+
+    .ticket-poster {
+        width: 100%;
+        height: 200px;
+        /* Limit height of image */
+    }
+
+    .ticket-poster img {
+        border-right: none;
+        border-bottom: 2px solid var(--comedy-gold-dim);
+    }
+
+    .ticket-rip {
+        display: none;
+        /* Hide vertical rip line on mobile */
+    }
+
+    .ticket-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .ticket-stub {
+        width: 100%;
+        height: 80px;
+        flex-direction: row;
+        /* Horizontal stub on mobile */
+        border-left: none;
+        border-top: 3px dashed var(--comedy-gold-dim);
+        background: #111;
+    }
+
+    .stub-content {
+        flex-direction: row;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .stub-admit {
+        writing-mode: horizontal-tb;
+        /* Horizontal Text */
+        transform: none;
+    }
+
+    .barcode {
+        width: 80px;
+        height: 30px;
+    }
+}
+/* =========================================
+   REFERENCES PAGE & FOOTER LINKS
+   ========================================= */
+
+/* --- Footer Link Styling --- */
+.footer-links {
+    margin-top: 10px;
+}
+
+.ref-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-bottom: 1px dotted #666;
+    transition: 0.3s;
+}
+
+.ref-link:hover {
+    color: var(--comedy-gold);
+    border-bottom-color: var(--comedy-gold);
+}
+
+/* --- References Container --- */
+.ref-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ref-section {
+    margin-bottom: 50px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+}
+
+.ref-title {
+    border-bottom: 2px solid var(--comedy-gold-dim);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.ref-title i {
+    color: var(--comedy-gold);
+}
+
+/* --- The List --- */
+.ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ref-item {
+    margin-bottom: 10px;
+}
+
+.ref-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ddd;
+    border-left: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.ref-item a:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-left-color: var(--comedy-gold);
+    padding-left: 25px;
+    /* Slide effect */
+}
+
+/* Name of the source */
+.ref-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--comedy-gold);
+}
+
+/* Description */
+.ref-detail {
+    color: #888;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.no-link {
+    cursor: default;
+}
+
+.no-link:hover {
+    /* Subtle hover for items that aren't clickable links */
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding-left: 20px !important;
+    /* No slide */
+    border-left-color: #555 !important;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+    .ref-item a {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .ref-detail {
+        text-align: left;
+    }
+}

@@ -1,4 +1,4 @@
-/* --- BASE STYLES (Adapted from original) --- */
+/* --- BASE STYLES --- */
 html,
 body {
     height: 100%;
@@ -9,12 +9,11 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "Segoe UI", Arial, sans-serif;
-    /* Dark background, but slightly warmer bottom gradient for comedy */
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a 40%, #1a1810);
     color: #e6e6e6;
 }
 
-/* --- VARIABLES FOR EASY THEME CHANGES --- */
+/* --- VARIABLES --- */
 :root {
     --comedy-gold: #ffd700;
     --comedy-gold-dim: rgba(255, 215, 0, 0.4);
@@ -36,7 +35,6 @@ body {
     background: #111;
     padding: 30px 10px 20px 10px;
     text-align: center;
-    /* Changed border to Gold */
     border-bottom: 2px solid var(--comedy-gold-dim);
     box-shadow: 0 4px 12px var(--comedy-gold-glow);
     z-index: 10;
@@ -47,7 +45,6 @@ body {
     font-size: 2.8rem;
     letter-spacing: 2px;
     color: var(--comedy-gold);
-    /* Gold Glow */
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
 }
 
@@ -103,11 +100,10 @@ p {
     font-size: 1.05rem;
 }
 
-/* --- NAVIGATION GRID (The "Buttons") --- */
+/* --- NAVIGATION GRID --- */
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4 columns on desktop */
     gap: 25px;
     margin-bottom: 40px;
 }
@@ -125,7 +121,6 @@ p {
     text-decoration: none;
     color: #fff;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Bouncy transition */
     position: relative;
     overflow: hidden;
 }
@@ -216,7 +211,6 @@ p {
 @media (max-width: 900px) {
     .nav-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* 2x2 Grid */
     }
 
     .intro-content {
@@ -237,7 +231,6 @@ p {
 
     .nav-grid {
         grid-template-columns: 1fr;
-        /* Stack vertically */
     }
 
     .intro-section {
@@ -247,7 +240,6 @@ p {
     .nav-card {
         padding: 20px;
         flex-direction: row;
-        /* Horizontal cards on mobile */
         text-align: left;
         justify-content: flex-start;
         gap: 20px;
@@ -264,7 +256,7 @@ p {
 }
 
 /* =========================================
-   HISTORY PAGE SPECIFIC STYLES (REVISED)
+   HISTORY PAGE SPECIFIC STYLES
    ========================================= */
 
 /* --- Back Button --- */
@@ -296,7 +288,6 @@ p {
     padding: 20px 0;
     max-width: 1000px;
     margin: 0 auto;
-    /* Ensure shadows/glows don't get cut off */
     overflow: visible;
 }
 
@@ -336,7 +327,6 @@ p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     z-index: 2;
     white-space: nowrap;
-    /* Prevents date breaking into two lines */
 }
 
 /* The Content Box */
@@ -415,18 +405,16 @@ p {
 }
 
 /* =========================================
-   HISTORY RESPONSIVE MEDIA QUERIES (FIXED)
+   HISTORY RESPONSIVE MEDIA QUERIES
    ========================================= */
 
 @media (max-width: 900px) {
 
-    /* 1. MOVE LINE TO LEFT (Offset 40px so marker doesn't cut off) */
     .timeline-line {
         left: 40px;
         transform: translateX(-50%);
     }
 
-    /* 2. ALIGN MARKER TO NEW LINE */
     .timeline-marker {
         left: 40px;
         transform: translateX(-50%);
@@ -434,18 +422,14 @@ p {
         font-size: 0.8rem;
     }
 
-    /* 3. STACK CONTENT VERTICALLY */
     .timeline-content {
         flex-direction: column;
         align-items: flex-start;
         width: auto;
-        /* Push content clear of the line */
         margin-left: 80px;
         padding-right: 10px;
     }
 
-    /* 4. FIX REVERSE LAYOUT 
-       Use column-reverse to ensure Image stays ON TOP of text for consistency */
     .timeline-content.reverse-layout {
         flex-direction: column-reverse;
         align-items: flex-start;
@@ -454,7 +438,6 @@ p {
         padding-right: 10px;
     }
 
-    /* 5. RESET WIDTHS & SPACING */
     .timeline-content .t-image,
     .timeline-content .t-text,
     .timeline-content.reverse-layout .t-image {
@@ -463,18 +446,15 @@ p {
         padding: 0;
     }
 
-    /* Add space between image and text */
     .t-image {
         margin-bottom: 15px;
     }
 
-    /* Allow image to be full width of the container */
     .t-image img {
         width: 100%;
         max-width: 100%;
         height: auto;
         max-height: 300px;
-        /* Prevent huge vertical images */
     }
 }
 
@@ -485,8 +465,6 @@ p {
 /* --- The Grid Layout --- */
 .facts-grid {
     display: grid;
-    /* This automatically fits columns based on width. 
-       If a card gets smaller than 300px, it wraps to the next line. */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     padding-bottom: 40px;
@@ -499,9 +477,7 @@ p {
     border-radius: 15px;
     padding: 30px;
     position: relative;
-    /* Needed for absolute positioning of the number */
     overflow: hidden;
-    /* Keeps the big number inside the box */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
@@ -514,7 +490,7 @@ p {
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
 }
 
-/* --- Wide Card (Spans 2 columns on Desktop) --- */
+/* --- Wide Card --- */
 .wide-card {
     grid-column: span 2;
 }
@@ -527,7 +503,6 @@ p {
     font-size: 8rem;
     font-weight: 900;
     color: rgba(255, 255, 255, 0.03);
-    /* Very faint */
     z-index: 0;
     font-family: Arial, sans-serif;
     transition: 0.4s;
@@ -536,7 +511,6 @@ p {
 
 .fact-card:hover .fact-bg-num {
     color: rgba(255, 215, 0, 0.1);
-    /* Glows slightly on hover */
     transform: scale(1.1) rotate(-10deg);
 }
 
@@ -546,13 +520,11 @@ p {
     color: var(--comedy-gold);
     margin-bottom: 20px;
     z-index: 1;
-    /* Puts it above the background number */
 }
 
 /* --- The Content --- */
 .fact-content {
     z-index: 1;
-    /* Puts text above the background number */
 }
 
 .fact-content h3 {
@@ -578,16 +550,12 @@ p {
    ========================================= */
 
 @media (max-width: 768px) {
-
-    /* On tablets/mobile, force wide cards to behave normally 
-       so they don't squish or break layout */
     .wide-card {
         grid-column: span 1;
     }
 
     .facts-grid {
         grid-template-columns: 1fr;
-        /* Single column stack */
         gap: 20px;
     }
 
@@ -603,7 +571,6 @@ p {
 /* --- The Grid --- */
 .flip-grid {
     display: grid;
-    /* Responsive columns: Fits as many 280px cards as possible */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding-bottom: 40px;
@@ -613,27 +580,29 @@ p {
 .flip-card {
     background-color: transparent;
     height: 420px;
-    /* Fixed height is necessary for flip to work */
     perspective: 1000px;
-    /* Essential: Creates the 3D depth effect */
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
-/* --- The Inner Wrapper (This creates the rotation) --- */
+/* Hover Action: Rotate the inner card */
+.flip-card:hover {
+    z-index: 50;
+}
+
+/* --- The Inner Wrapper --- */
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
     transition: transform 0.8s;
-    /* Duration of flip */
     transform-style: preserve-3d;
-    /* Essential: Keeps children in 3D space */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Hover Action: Rotate the inner card */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
@@ -644,7 +613,6 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* Hides the back of the element when facing away */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 15px;
@@ -694,7 +662,6 @@ p {
     background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
     color: white;
     transform: rotateY(180deg);
-    /* Start it rotated so it's behind the front */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -748,7 +715,6 @@ p {
 .stat-row i {
     color: var(--comedy-gold);
     width: 20px;
-    /* Fixed width to align text */
     text-align: center;
 }
 
@@ -759,13 +725,11 @@ p {
 @media (max-width: 600px) {
     .flip-grid {
         grid-template-columns: 1fr;
-        /* 1 Column on mobile */
         padding: 0 10px;
     }
 
     .flip-card {
         height: 400px;
-        /* Slightly shorter on mobile */
     }
 }
 
@@ -787,7 +751,6 @@ p {
     border: 2px solid var(--comedy-gold-dim);
     border-radius: 12px;
     overflow: hidden;
-    /* Keeps content inside rounded corners */
     position: relative;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -803,7 +766,6 @@ p {
 /* --- Left: The Poster --- */
 .ticket-poster {
     width: 160px;
-    /* Fixed width */
     flex-shrink: 0;
 }
 
@@ -818,7 +780,6 @@ p {
 /* --- Center: The Info --- */
 .ticket-info {
     flex: 1;
-    /* Takes up remaining space */
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -883,10 +844,8 @@ p {
     width: 20px;
     height: 20px;
     background-color: #0f0f0f;
-    /* Must match Page Body Background */
     border-radius: 50%;
     left: -11.5px;
-    /* Center circle on the line */
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -921,9 +880,7 @@ p {
 
 .stub-admit {
     writing-mode: vertical-rl;
-    /* Vertical Text */
     transform: rotate(180deg);
-    /* Flip it so it reads bottom-to-top */
     font-weight: bold;
     letter-spacing: 3px;
     color: var(--comedy-gold);
@@ -963,13 +920,11 @@ p {
 @media (max-width: 768px) {
     .movie-ticket {
         flex-direction: column;
-        /* Stack vertically */
     }
 
     .ticket-poster {
         width: 100%;
         height: 200px;
-        /* Limit height of image */
     }
 
     .ticket-poster img {
@@ -979,7 +934,6 @@ p {
 
     .ticket-rip {
         display: none;
-        /* Hide vertical rip line on mobile */
     }
 
     .ticket-header {
@@ -992,7 +946,6 @@ p {
         width: 100%;
         height: 80px;
         flex-direction: row;
-        /* Horizontal stub on mobile */
         border-left: none;
         border-top: 3px dashed var(--comedy-gold-dim);
         background: #111;
@@ -1006,7 +959,6 @@ p {
 
     .stub-admit {
         writing-mode: horizontal-tb;
-        /* Horizontal Text */
         transform: none;
     }
 
@@ -1015,6 +967,7 @@ p {
         height: 30px;
     }
 }
+
 /* =========================================
    REFERENCES PAGE & FOOTER LINKS
    ========================================= */
@@ -1093,7 +1046,6 @@ p {
     background: rgba(255, 215, 0, 0.1);
     border-left-color: var(--comedy-gold);
     padding-left: 25px;
-    /* Slide effect */
 }
 
 /* Name of the source */
@@ -1115,10 +1067,8 @@ p {
 }
 
 .no-link:hover {
-    /* Subtle hover for items that aren't clickable links */
     background: rgba(255, 255, 255, 0.05) !important;
     padding-left: 20px !important;
-    /* No slide */
     border-left-color: #555 !important;
 }
 
